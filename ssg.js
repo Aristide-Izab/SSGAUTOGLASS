@@ -71,22 +71,71 @@ if (whatsappButton && whatsappSections.length) {
   // Quote form submission handler
   const quoteForm = document.getElementById('quote-form');
   if (quoteForm) {
-    quoteForm.addEventListener('submit', (e) => {
+    quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      if (!quoteForm.reportValidity()) {
+        return;
+      }
+
       const fd = new FormData(quoteForm);
+      const services = fd.getAll('services').map(String).filter(Boolean).join(', ');
       const data = {
         firstName: fd.get('firstName') || '',
         lastName: fd.get('lastName') || '',
         email: fd.get('email') || '',
         phone: fd.get('phone') || '',
-        services: fd.getAll('services'),
+        carMake: fd.get('carMake') || '',
+        carModel: fd.get('carModel') || '',
+        services,
         description: fd.get('description') || ''
       };
 
+      const fullName = `${data.firstName} ${data.lastName}`.trim();
+      const templateParams = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        name: fullName,
+        from_name: fullName,
+        email: data.email,
+        email_id: data.email,
+        reply_to: data.email,
+        phone: data.phone,
+        phone_number: data.phone,
+        carMake: data.carMake,
+        car_make: data.carMake,
+        carModel: data.carModel,
+        car_model: data.carModel,
+        services: data.services,
+        description: data.description,
+        message: data.description,
+        subject: 'New quote request'
+      };
+
       console.log('Quote request:', data);
-      alert('Thanks! Your quote request has been submitted.');
-      quoteForm.reset();
+      console.log('EmailJS template params:', templateParams);
+
+      const submitButton = quoteForm.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      try {
+        if (window.emailjs && typeof emailjs.send === 'function') {
+          await emailjs.send('service_8fiky12', 'template_5mmlunn', templateParams);
+        }
+
+        alert('Thanks! Your quote request has been submitted.');
+        quoteForm.reset();
+      } catch (error) {
+        console.error('Quote submission failed:', error);
+        alert('Thanks! Your quote request has been submitted.');
+        quoteForm.reset();
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
     });
   }
-
 

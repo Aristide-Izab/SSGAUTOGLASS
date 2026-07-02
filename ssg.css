@@ -445,7 +445,7 @@ header .navbar {
 
 /* Quote Form */
 .quote-section {
-    min-height: 100vh; 
+    min-height: 110vh; 
     background: var(--dark-color);
 }
 

@@ -14,8 +14,21 @@
 <!-- Custom CSS -->
     <link rel="stylesheet" href="ssg.css">
 
+<!-- Send Emailjs-->
+ <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "ryHqNklj2MuyTKLDB",
+      });
+   })();
+</script>
 
 </head>
+
+
 <body>
         <!-- NavBar -->
     <header>
@@ -63,7 +76,7 @@
         <section id="home" class="home-section" data-whatsapp-bg="#1b0094" data-whatsapp-text="#ffffff" data-whatsapp-ring="rgba(255,255,255,0.18)">
             <div class="section-content">
                 <div class="home-details">
-                    <h2 class = "title">Windscreen Replacement</h2>
+                    
                     <h3 class="subtitle">Make your day great with our expert windscreen service!</h3>
                     <p class = "description">Restore clear vision with professional windscreen repair and replacement.</p>
 
@@ -189,13 +202,18 @@
 
                 <form id="quote-form" class="quote-form" action="#" method="post">
                     <div class="form-row">
-                        <input type="text" name="firstName" placeholder="First Name" required>
-                        <input type="text" name="lastName" placeholder="Last Name" required>
+                        <input id="firstName" type="text" name="firstName" placeholder="First Name" required>
+                        <input id="lastName" type="text" name="lastName" placeholder="Last Name" required>
                     </div>
 
                     <div class="form-row">
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="tel" name="phone" placeholder="Phone Number" required>
+                        <input id="email" type="email" name="email" placeholder="Email" required>
+                        <input id="phone" type="tel" name="phone" placeholder="Phone Number" required>
+                    </div>
+
+                    <div class="form-row">
+                        <input id="carMake" type="text" name="carMake" placeholder="Car Make" required>
+                        <input id="carModel" type="text" name="carModel" placeholder="Car Model" required>
                     </div>
 
                     <fieldset class="services-fieldset">
@@ -207,13 +225,13 @@
                     </fieldset>
 
                     <div class="form-row">
-                        <textarea name="description" placeholder="Describe your problem" rows="4"></textarea>
+                        <textarea id="description" name="description" placeholder="Describe your problem" rows="4"></textarea>
                     </div>
 
                     <div class="buttons">
-                        <a href="#quote" class="button get-quote">Get Quote</a>
-            </div>
-                </form>
+                        <button type="submit" class="button get-quote">Get Quote</button>
+                    </div>
+                </form>     
             </div>
         </div>
        </section>
