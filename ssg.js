@@ -53,19 +53,27 @@ if (whatsappButton && whatsappSections.length) {
     whatsappButton.style.setProperty('--whatsapp-bg', section.dataset.whatsappBg);
     whatsappButton.style.setProperty('--whatsapp-text', section.dataset.whatsappText || '#ffffff');
     whatsappButton.style.setProperty('--whatsapp-ring', section.dataset.whatsappRing || section.dataset.whatsappBg);
+    whatsappButton.style.setProperty('--whatsapp-hover-bg', section.dataset.whatsappText || '#ffffff');
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        updateWhatsappStyle(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.55,
-  });
+  const getSectionUnderButton = () => {
+    const rect = whatsappButton.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const element = document.elementFromPoint(x, y);
+    return element ? element.closest('section[data-whatsapp-bg]') : null;
+  };
 
-  whatsappSections.forEach((section) => observer.observe(section));
+  const updateWhatsappStyleForCurrentSection = () => {
+    const section = getSectionUnderButton();
+    if (section) {
+      updateWhatsappStyle(section);
+    }
+  };
+
+  window.addEventListener('scroll', updateWhatsappStyleForCurrentSection, { passive: true });
+  window.addEventListener('resize', updateWhatsappStyleForCurrentSection);
+  updateWhatsappStyleForCurrentSection();
 }
 
   // Quote form submission handler

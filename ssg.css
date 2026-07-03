@@ -16,11 +16,11 @@ html {
   /*Colors*/
  --white-color: #fff;
  --dark-color: #252525;
- --primary-color: #1b0094;
- --secondary-color: #657fb9;
- --nice-blue-color: #4613ff;
- --medium-gray-color: #bdbdbd;
- --light-pink-color: #fce4ec;
+ --primary-color: #1565C0;
+ --secondary-color: #FFFFFF;
+ --nice-blue-color: #4b24d8;
+ --medium-gray-color: #084f72;
+ --light-pink-color: #446b81;
 
  
   /*Font Sizes*/
@@ -136,7 +136,7 @@ header .navbar {
 
 .navbar .nav-menu .nav-link:hover {
     color: var(--primary-color);
-    background: var(--light-pink-color);
+    background: var(--secondary-color);
 }
 
   .navbar :where(#menu-close-button, #menu-open-button) {
@@ -363,13 +363,13 @@ header .navbar {
 }
 
 .contact-section .social-link-list .social-link {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: var(--font-size-l);
     transition: 0.3s ease;
 }
 
 .contact-section .social-link-list .social-link:hover {
-    color: var(--nice-blue-color);
+    color: var(--dark-color);
 } 
 
 
@@ -446,7 +446,7 @@ header .navbar {
 /* Quote Form */
 .quote-section {
     min-height: 110vh; 
-    background: var(--dark-color);
+    background: var(--primary-color);
 }
 
 .quote-section .quote-details {
@@ -635,6 +635,11 @@ footer .container p {
     line-height: normal;
 }
 
+#whatsapp .wtsapp:hover {
+    background-color: var(--whatsapp-text);
+    color: var(--whatsapp-bg);
+    transform: translateY(-2px) scale(1.03);
+}
 
 #whatsapp .wtsapp:before{
     content: "";
