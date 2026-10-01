@@ -1,309 +1,202 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SSG AutoGlass</title>
-
-<!-- Font Awesome CDN -->
+    <meta name="description" content="Professional windscreen repair, replacement and mobile auto glass services in Cape Town.">
+    <title>SSG Auto Glass | Windscreen Specialists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-
-<!--Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
-
-<!-- Custom CSS -->
     <link rel="stylesheet" href="ssg.css">
-
-<!-- Send Emailjs-->
- <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "ryHqNklj2MuyTKLDB",
-      });
-   })();
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.emailjs) emailjs.init({ publicKey: 'ryHqNklj2MuyTKLDB' });
+        });
+    </script>
 </head>
-
-
 <body>
-        <!-- NavBar -->
-    <header>
-         <nav class="navbar section-content">
-            <a href="#" class="nav-logo" >
-                <img src="ssgauto.jpeg" alt="SSG AutoGlass Logo">
-                <h1 class="logo-text">SSG AutoGlass</h1>
+    <header class="site-header">
+        <nav class="navbar section-content" aria-label="Main navigation">
+            <a href="#home" class="nav-logo" aria-label="SSG Auto Glass home">
+                <span class="logo-mark"><img src="ssgauto.jpeg" alt="SSG Auto Glass logo"></span>
+                <span class="logo-copy"><strong>SSG Auto Glass</strong><small>Windscreen specialists</small></span>
             </a>
-
-            <ul class="nav-menu">
-               <button id="menu-close-button" class="fas fa-times"></button>  
-
-                <li class="nav-item">
-                    <a href="#home" class="nav-link" >Home</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#about" class="nav-link" >About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#services" class="nav-link" >Services</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#testimonials" class="nav-link" >Testimonials</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#quote" class="nav-link" >Quote</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link" >Contact</a>
-                </li>
+            <ul class="nav-menu" id="main-menu">
+                <li><button id="menu-close-button" class="menu-button" type="button" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#work" class="nav-link">Our work</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-
-            <button id="menu-open-button" class="fas fa-bars"></button>
+            <a class="header-call" href="tel:+27753141398"><i class="fa-solid fa-phone"></i><span>075 314 1398</span></a>
+            <button id="menu-open-button" class="menu-button" type="button" aria-label="Open menu" aria-controls="main-menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
         </nav>
     </header>
 
     <main>
-
-        <!-- Home section  -->
-        <section id="home" class="home-section" data-whatsapp-bg="#1b0094" data-whatsapp-text="#ffffff" data-whatsapp-ring="rgba(255,255,255,0.18)">
-            <div class="section-content">
-                <div class="home-details">
-                    
-                    <h3 class="subtitle">Make your day great with our expert windscreen service!</h3>
-                    <p class = "description">Restore clear vision with professional windscreen repair and replacement.</p>
-
-                    <div class="buttons">
-                        <a href="#quote" class="button get-quote">Get Quote</a>
-                        <a href="#contact" class="button contact-us">Contact Us</a>
-            </div>
-           </div>
-          <!--<div class="home-image-wrapper">
-            <img src="windscreen-home-section.png" alt="Home" class = "home-image" > 
-        </div> -->
-       </section>   
-
-       <!--About Section-->
-       <section id="about" class="about-section" data-whatsapp-bg="#657fb9" data-whatsapp-text="#ffffff" data-whatsapp-ring="rgba(255,255,255,0.18)">
-        <div class="section-content">
-
-          <div class="about-image-wrapper">
-            <img src="Manager.jpeg" alt="About" class="about-image">
-          </div>
-
-          <div class="about-details">
-            <h2 class="section-title">About Us</h2>
-            <p class="text">At SSG AutoGlass in Cape Town, South Africa
-                we pride ourselves on being the go-to destination for windscreen
-                repair and replacement. We're dedicated 
-                to providing exceptional auto glass service with fast, reliable
-                workmanship and a friendly, professional experience.
-          </div>
-        </div>
-       </section>
-
-       <!-- Service Section -->
-       <section id="services" class="service-section" data-whatsapp-bg="#252525" data-whatsapp-text="#ffffff" data-whatsapp-ring="rgba(255,255,255,0.18)">
-        <h2 class="section-title">Our Services</h2>
-        <div class="section-content">
-            <ul class="service-list">
-                <li class="service-item">
-                    <img src="GTI.jpeg" alt="Windscreen Replacement" class="service-image">
-                    <h3 class="name">Windscreen Replacement</h3>
-                    <p class="text">Fast, reliable windscreen replacement to keep your drive safe and clear.</p>
-                </li>
-                <li class="service-item">
-                    <img src="ssg-vehicle2.webp" alt="Auto Glass Repair" class="service-image">
-                    <h3 class="name">Auto Glass Repair</h3>
-                    <p class="text">Expert repair for chips, cracks, and stone damage on your windscreen.</p>
-                </li>
-                <li class="service-item">
-                    <img src="ssg-vehicle3.webp" alt="Mobile Service" class="service-image">
-                    <h3 class="name">Mobile Service</h3>
-                    <p class="text">Comprehensive mobile windscreen service so you can get repairs wherever you are.</p>
-                </li>
-                <li class="service-item">
-                    <img src="ssg-BMW.jpeg" alt="Service Package" class="service-image">
-                    <h3 class="name">Service Package</h3>
-                    <p class="text">Our exclusive full-service windscreen care package.</p>
-                </li>
-                <li class="service-item">
-                    <img src="ssg-VW.jpeg" alt="Sensor Recalibration" class="service-image">
-                    <h3 class="name">Sensor Recalibration</h3>
-                    <p class="text">Precise camera and sensor calibration after glass replacement.</p>
-                </li>
-                <li class="service-item">
-                    <img src="ssg-Toyota.jpeg" alt="Chip Repair" class="service-image">
-                    <h3 class="name">Chip Repair</h3>
-                    <p class="text">Minor chip repair to prevent cracks from spreading.</p>
-                </li>
-            </ul>
-        </div>
-       </section>
-
-       <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section" data-whatsapp-bg="#fce4e4" data-whatsapp-text="#252525" data-whatsapp-ring="#f4d8d8">
-            <h2 class="section-title">What Our Customers Say</h2>
-            <div class="section-content">
-                <div class="slider-container swiper">
-                    <div class="slider-wrapper">
-                        <ul class="testomial-list swiper-wrapper">
-                            <li class="testimonial swiper-slide">
-                                <img src="Ayanda.jpeg" alt="User" class="user-image">
-                                <h3 class="name">Ayanda</h3>
-                                <i class="feedback">Thank you for the amazing windscreen service and customer care!</i>
-                            </li>
-                            <li class="testimonial swiper-slide">
-                                <img src="user-2.jpg" alt="User" class="user-image">
-                                <h3 class="name">John Doe</h3>
-                                <i class="feedback">Thank you for the amazing windscreen service and customer care!</i>
-                            </li>
-                            <li class="testimonial swiper-slide">
-                                <img src="user-3.jpg" alt="User" class="user-image">
-                                <h3 class="name">John Doe</h3>
-                                <i class="feedback">Thank you for the amazing windscreen service and customer care!</i>
-                            </li>
-                            <li class="testimonial swiper-slide">
-                                <img src="user-4.jpg" alt="User" class="user-image">
-                                <h3 class="name">John Doe</h3>
-                                <i class="feedback">Thank you for the amazing windscreen service and customer care!</i>
-                            </li>
-                            <li class="testimonial swiper-slide">
-                                <img src="user-5.jpg" alt="User" class="user-image">
-                                <h3 class="name">John Doe</h3>
-                                <i class="feedback">Thank you for the amazing windscreen service and customer care!</i>
-                            </li>
-                        </ul>
-
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+        <section id="home" class="hero-section">
+            <div class="hero-glow hero-glow-one"></div><div class="hero-glow hero-glow-two"></div>
+            <div class="section-content hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span></span> Friendly windscreen help in Cape Town</p>
+                    <h1>Windscreen trouble?<br><em>We’re here to help.</em></h1>
+                    <p class="hero-text">From a small chip to a full replacement, we make getting back on the road simple, safe and stress-free.</p>
+                    <div class="hero-actions">
+                        <a href="#quote" class="button button-primary">Get a free quote <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="tel:+27753141398" class="button button-secondary"><i class="fa-solid fa-phone"></i> Call us now</a>
                     </div>
+                    <div class="trust-row" aria-label="Service benefits">
+                        <div class="trust-item"><i class="fa-solid fa-location-dot"></i><span><strong>Mobile service</strong><small>We come to you</small></span></div>
+                        <div class="trust-item"><i class="fa-solid fa-clock"></i><span><strong>Open 24 hours</strong><small>Monday to Saturday</small></span></div>
+                        <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span><strong>Safe & reliable</strong><small>Quality workmanship</small></span></div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-frame">
+                        <img src="ssg-BMW-ssgauto.png" alt="Vehicle serviced by SSG Auto Glass with an SSGAUTO number plate">
+                        <div class="hero-image-shade"></div>
+                        <div class="hero-badge"><i class="fa-solid fa-car-side"></i><span>Professional care<br><strong>for every vehicle</strong></span></div>
+                    </div>
+                    <div class="glass-accent"></div>
+                </div>
+            </div>
+            <a href="#services" class="scroll-cue" aria-label="Scroll to services"><span>Explore services</span><i class="fa-solid fa-arrow-down"></i></a>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="section-content">
+                <div class="section-heading split-heading">
+                    <div><p class="eyebrow dark"><span></span> What we do</p><h2>Complete auto glass care</h2></div>
+                    <p>From small chips to full windscreen replacements, our team helps you get safely back on the road.</p>
+                </div>
+                <div class="service-grid">
+                    <article class="service-card service-card-featured">
+                        <img src="GTI.jpeg" alt="Rear windscreen replacement work"><div class="service-overlay"></div><div class="service-number">01</div>
+                        <div class="service-card-copy"><i class="fa-solid fa-car-burst"></i><h3>Windscreen replacement</h3><p>Safe, precise replacement for damaged front, rear and side glass.</p></div>
+                    </article>
+                    <article class="service-card"><img src="ssg-vehicle2.webp" alt="Technician completing auto glass repair"><div class="service-card-copy"><span class="service-number">02</span><h3>Chip & crack repair</h3><p>Early repairs that help stop minor damage from spreading.</p></div></article>
+                    <article class="service-card"><img src="ssg-vehicle3.webp" alt="SSG Auto Glass mobile service vehicle"><div class="service-card-copy"><span class="service-number">03</span><h3>Mobile service</h3><p>Convenient on-site assistance across Cape Town.</p></div></article>
+                    <article class="service-card"><img src="ssg-VW.jpeg" alt="Volkswagen after windscreen service"><div class="service-card-copy"><span class="service-number">04</span><h3>Sensor recalibration</h3><p>Careful camera and sensor setup after glass replacement.</p></div></article>
                 </div>
             </div>
         </section>
 
-        <!-- Quote Section -->
-       <section id="quote" class="quote-section" data-whatsapp-bg="#252525" data-whatsapp-text="#ffffff" data-whatsapp-ring="rgba(255,255,255,0.18)">
-        <h2 class="section-title">Get a Quote</h2>
-        <div class="section-content">
-            
-
-            <div class="quote-details">
-                <h3 class="name">Get a Quote</h3>
-                <p class="text">Get a fast quote for windscreen repair, replacement, or mobile auto glass service.</p>
-
-                <form id="quote-form" class="quote-form" action="#" method="post">
-                    <div class="form-row">
-                        <input id="firstName" type="text" name="firstName" placeholder="First Name" required>
-                        <input id="lastName" type="text" name="lastName" placeholder="Last Name" required>
+        <section id="about" class="about-section">
+            <div class="section-content about-grid">
+                <div class="about-visual">
+                    <img src="Manager.jpeg" alt="SSG Auto Glass manager"><div class="about-frame"></div>
+                    <div class="about-note"><i class="fa-solid fa-handshake"></i><span>Local service.<br><strong>Professional standards.</strong></span></div>
+                </div>
+                <div class="about-copy">
+                    <p class="eyebrow dark"><span></span> About SSG</p>
+                    <h2>Your trusted glass team in Cape Town</h2>
+                    <p>At SSG Auto Glass, we know damaged vehicle glass can disrupt your whole day. That is why we focus on responsive service, clear communication and dependable workmanship from the first call to the final inspection.</p>
+                    <p>Whether you visit us in Bellville South or use our mobile service, your safety and convenience come first.</p>
+                    <div class="values-grid">
+                        <div><i class="fa-solid fa-bolt"></i><span><strong>Fast response</strong><small>Quick, practical assistance</small></span></div>
+                        <div><i class="fa-solid fa-circle-check"></i><span><strong>Quality focused</strong><small>Careful fitting and finishing</small></span></div>
+                        <div><i class="fa-solid fa-comments"></i><span><strong>Clear service</strong><small>Friendly, honest communication</small></span></div>
+                        <div><i class="fa-solid fa-map-location-dot"></i><span><strong>Cape Town based</strong><small>Local and mobile support</small></span></div>
                     </div>
-
-                    <div class="form-row">
-                        <input id="email" type="email" name="email" placeholder="Email" required>
-                        <input id="phone" type="tel" name="phone" placeholder="Phone Number" required>
-                    </div>
-
-                    <div class="form-row">
-                        <input id="carMake" type="text" name="carMake" placeholder="Car Make" required>
-                        <input id="carModel" type="text" name="carModel" placeholder="Car Model" required>
-                    </div>
-
-                    <fieldset class="services-fieldset">
-                        <legend>Services</legend>
-                        <label><input type="checkbox" name="services" value="Windscreen Replacement"> Windscreen Replacement</label>
-                        <label><input type="checkbox" name="services" value="Auto Glass Repair"> Auto Glass Repair</label>
-                        <label><input type="checkbox" name="services" value="Mobile Service"> Mobile Service</label>
-                        <label><input type="checkbox" name="services" value="Chip Repair"> Chip Repair</label>
-                    </fieldset>
-
-                    <div class="form-row">
-                        <textarea id="description" name="description" placeholder="Describe your problem" rows="4"></textarea>
-                    </div>
-
-                    <div class="buttons">
-                        <button type="submit" class="button get-quote">Get Quote</button>
-                    </div>
-                </form>     
+                    <a href="#quote" class="text-link">Request your quote <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
+        </section>
+
+        <section id="work" class="work-section">
+            <div class="section-content">
+                <div class="section-heading split-heading light-heading">
+                    <div><p class="eyebrow"><span></span> Recent work</p><h2>Vehicles we have worked on</h2></div>
+                    <p>Professional auto glass service for cars, bakkies and commercial vehicles.</p>
+                </div>
+                <div class="work-gallery">
+                    <figure class="work-item work-item-wide"><img src="ssg-vehicle1.webp" alt="Mercedes auto glass service"><figcaption><span>Precision fitting</span><small>Passenger vehicles</small></figcaption></figure>
+                    <figure class="work-item"><img src="ssg-Toyota.jpeg" alt="Toyota mobile glass service"><figcaption><span>Mobile service</span><small>On-site support</small></figcaption></figure>
+                    <figure class="work-item"><img src="ssg-vehicle4.webp" alt="Commercial van windscreen service"><figcaption><span>Commercial glass</span><small>Vans & fleet vehicles</small></figcaption></figure>
+                </div>
+                <div class="testimonial-panel">
+                    <div class="quote-mark">“</div><blockquote>Thank you for the amazing windscreen service and customer care!</blockquote>
+                    <div class="reviewer"><img src="Ayanda.jpeg" alt="Ayanda"><span><strong>Ayanda</strong><small>SSG Auto Glass customer</small></span></div>
+                    <div class="rating" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quote" class="quote-section">
+            <div class="section-content quote-grid">
+                <div class="quote-intro">
+                    <p class="eyebrow"><span></span> Get a quote</p><h2>Tell us what your vehicle needs.</h2>
+                    <p>Share a few details and our team will get back to you with the right solution.</p>
+                    <div class="quote-contact-list">
+                        <a href="tel:+27753141398"><i class="fa-solid fa-phone"></i><span><small>Call us directly</small><strong>075 314 1398</strong></span></a>
+                        <a href="https://wa.me/27753141398" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i><span><small>Message us</small><strong>Chat on WhatsApp</strong></span></a>
+                    </div>
+                </div>
+                <div class="quote-card">
+                    <form id="quote-form" class="quote-form" action="#" method="post">
+                        <div class="form-heading"><div><span>01</span><p>Your details</p></div><small>Fields marked * are required</small></div>
+                        <div class="form-row">
+                            <label for="firstName">First name *<input id="firstName" type="text" name="firstName" autocomplete="given-name" required></label>
+                            <label for="lastName">Last name *<input id="lastName" type="text" name="lastName" autocomplete="family-name" required></label>
+                        </div>
+                        <div class="form-row">
+                            <label for="email">Email address *<input id="email" type="email" name="email" autocomplete="email" required></label>
+                            <label for="phone">Phone number *<input id="phone" type="tel" name="phone" autocomplete="tel" required></label>
+                        </div>
+                        <div class="form-heading form-heading-spaced"><div><span>02</span><p>Vehicle & service</p></div></div>
+                        <div class="form-row">
+                            <label for="carMake">Vehicle make *<input id="carMake" type="text" name="carMake" placeholder="e.g. Toyota" required></label>
+                            <label for="carModel">Vehicle model *<input id="carModel" type="text" name="carModel" placeholder="e.g. Hilux" required></label>
+                        </div>
+                        <fieldset class="services-fieldset">
+                            <legend>Select a service</legend>
+                            <label><input type="checkbox" name="services" value="Windscreen Replacement"><span>Replacement</span></label>
+                            <label><input type="checkbox" name="services" value="Auto Glass Repair"><span>Glass repair</span></label>
+                            <label><input type="checkbox" name="services" value="Mobile Service"><span>Mobile service</span></label>
+                            <label><input type="checkbox" name="services" value="Chip Repair"><span>Chip repair</span></label>
+                        </fieldset>
+                        <label for="description" class="textarea-label">Anything else we should know?<textarea id="description" name="description" placeholder="Tell us where the damage is and when you need help..." rows="4"></textarea></label>
+                        <div class="form-submit-row"><button type="submit" class="button button-primary">Send quote request <i class="fa-solid fa-arrow-right"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="section-content">
+                <div class="contact-card">
+                    <div class="contact-brand">
+                        <span class="contact-logo"><img src="ssgauto.jpeg" alt="SSG Auto Glass"></span>
+                        <p class="eyebrow"><span></span> Contact us</p><h2>Ready to get back on the road?</h2><p>Contact our Cape Town team for professional auto glass assistance.</p>
+                        <a href="#quote" class="button button-primary">Request a quote <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-detail"><i class="fa-solid fa-phone"></i><span><small>Phone</small><a href="tel:+27753141398">075 314 1398</a></span></div>
+                        <div class="contact-detail"><i class="fa-solid fa-location-dot"></i><span><small>Workshop</small><address>21 Robert Sobukwe Road<br>Bellville South, Cape Town, 7530</address></span></div>
+                        <div class="contact-detail"><i class="fa-solid fa-clock"></i><span><small>Operating hours</small><p>Open 24 hours, Monday – Saturday</p></span></div>
+                        <div class="social-links" aria-label="Social media links">
+                            <a href="https://wa.me/27753141398" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/ssgautoglasscapetown" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/ssg_auto_glass/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="section-content footer-grid">
+            <div><strong>SSG Auto Glass</strong><p>Clear vision. Safer journeys.</p></div>
+            <nav aria-label="Footer navigation"><a href="#services">Services</a><a href="#about">About</a><a href="#work">Our work</a><a href="#contact">Contact</a></nav>
+            <p>&copy; <span id="current-year">2026</span> SSG Auto Glass. All rights reserved.</p>
         </div>
-       </section>
-
-       <!--Contact Section-->
-       <section id="contact" class="contact-section" data-whatsapp-bg="#657fb9" data-whatsapp-text="#ffffff" data-whatsapp-ring="rgba(255,255,255,0.18)">
-        <div class="section-content">
-
-          <div class="contact-image-wrapper">
-            <img src="ssgauto.jpeg" alt="Contact" class="contact-image">
-          </div>
-
-          <div class="contact-details">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="text">
-                <strong>Phone:</strong> 075 314 1398<br>
-                <strong>Location:</strong>  21 Robert Sobukwe Rd,<br> Bellville South, Cape Town, 7530<br>
-                <strong>Hours:</strong> Open 24 hours, Mon - Sat.
-            </p>
-            <div class="social-link-list">
-                <a href="https://wa.me/0753141398" class="social-link" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/ssgautoglasscapetown" class="social-link" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/ssg_auto_glass/" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-       </section>
-
-       <!-- Footer Section -->
-        <footer>    
-            <div class="container">
-            <ul class="flex-row">
-
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-
-            </ul>
-
-            <!-- <ul class="flex-row">
-                <li>
-                    <i class="fab fa-whatsapp"></i>
-                </li>
-                <li>
-                    <i class="fab fa-facebook-f"></i>
-                </li>
-                <li>
-                    <i class="fab fa-instagram"></i>
-                </li>
-                
-            </ul> -->
-
-
-                <p>&copy; 2023 SSGAUTOGLASS. All rights reserved.</p>
-            </div>
-        </footer>
-
-        <!-- Whatsapp Icon -->
-         <div id="whatsapp">
-            <a href="https://wa.me/0753141398" target="_blank" id="toggle1" class="wtsapp">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-         </div>
-
-    </main> 
-
-    <!--Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-
+    </footer>
+    <a href="https://wa.me/27753141398" target="_blank" rel="noopener" class="whatsapp-button" aria-label="Chat with SSG Auto Glass on WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
     <script src="ssg.js"></script>
-
 </body>
 </html>

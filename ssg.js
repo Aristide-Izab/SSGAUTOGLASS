@@ -1,149 +1,100 @@
 const menuOpenButton = document.querySelector('#menu-open-button');
 const menuCloseButton = document.querySelector('#menu-close-button');
+const navLinks = document.querySelectorAll('.nav-link');
 
-menuOpenButton.addEventListener('click', () => {
-    // Toggle the "show-mobile-menu" class on the body element
-    document.body.classList.toggle("show-mobile-menu");
+const setMenuState = (isOpen) => {
+  document.body.classList.toggle('show-mobile-menu', isOpen);
+  menuOpenButton?.setAttribute('aria-expanded', String(isOpen));
+};
+
+menuOpenButton?.addEventListener('click', () => setMenuState(true));
+menuCloseButton?.addEventListener('click', () => setMenuState(false));
+navLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenuState(false);
 });
 
-// Close the mobile menu when the close button is clicked
-menuCloseButton.addEventListener('click', () => menuOpenButton.click());
+const sections = [...document.querySelectorAll('main section[id]')];
+const updateActiveLink = () => {
+  const current = sections.reduce((active, section) => {
+    return window.scrollY >= section.offsetTop - 150 ? section.id : active;
+  }, 'home');
 
-// Initialize Swiper
-const swiper = new Swiper('.slider-wrapper', {
-  loop: true,
-  spaceBetween: 25,
+  navLinks.forEach((link) => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+  });
+};
 
-    // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true, 
-    dynamicBullets: true,
-  },
+window.addEventListener('scroll', updateActiveLink, { passive: true });
+updateActiveLink();
 
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  
-  // Responsive breakpoints
-  breakpoints: {
-    0: {
-      slidesPerView: 1, 
-    },
-    768: {
-      slidesPerView: 2, 
-    },  
-    1024: {
-      slidesPerView: 3, 
-    },
-  }, 
+const year = document.querySelector('#current-year');
+if (year) year.textContent = new Date().getFullYear();
 
-});
+const quoteForm = document.querySelector('#quote-form');
+const formStatus = document.querySelector('#form-status');
 
+const showFormStatus = (message, isError = false) => {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.classList.toggle('error', isError);
+};
 
+quoteForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!quoteForm.reportValidity()) return;
 
-// Whatsapp icon dynamic styling based on section background colors
-const whatsappButton = document.querySelector('#whatsapp .wtsapp');
-const whatsappSections = document.querySelectorAll('section[data-whatsapp-bg]');
+  const formData = new FormData(quoteForm);
+  const selectedServices = formData.getAll('services').map(String).filter(Boolean).join(', ');
+  const firstName = String(formData.get('firstName') || '');
+  const lastName = String(formData.get('lastName') || '');
+  const fullName = `${firstName} ${lastName}`.trim();
 
-if (whatsappButton && whatsappSections.length) {
-  const updateWhatsappStyle = (section) => {
-    whatsappButton.style.setProperty('--whatsapp-bg', section.dataset.whatsappBg);
-    whatsappButton.style.setProperty('--whatsapp-text', section.dataset.whatsappText || '#ffffff');
-    whatsappButton.style.setProperty('--whatsapp-ring', section.dataset.whatsappRing || section.dataset.whatsappBg);
-    whatsappButton.style.setProperty('--whatsapp-hover-bg', section.dataset.whatsappText || '#ffffff');
+  const templateParams = {
+    firstName,
+    lastName,
+    name: fullName,
+    from_name: fullName,
+    email: formData.get('email') || '',
+    email_id: formData.get('email') || '',
+    reply_to: formData.get('email') || '',
+    phone: formData.get('phone') || '',
+    phone_number: formData.get('phone') || '',
+    carMake: formData.get('carMake') || '',
+    car_make: formData.get('carMake') || '',
+    carModel: formData.get('carModel') || '',
+    car_model: formData.get('carModel') || '',
+    services: selectedServices || 'Not selected',
+    description: formData.get('description') || '',
+    message: formData.get('description') || '',
+    subject: 'New quote request'
   };
 
-  const getSectionUnderButton = () => {
-    const rect = whatsappButton.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const element = document.elementFromPoint(x, y);
-    return element ? element.closest('section[data-whatsapp-bg]') : null;
-  };
+  const submitButton = quoteForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.innerHTML;
 
-  const updateWhatsappStyleForCurrentSection = () => {
-    const section = getSectionUnderButton();
-    if (section) {
-      updateWhatsappStyle(section);
-    }
-  };
-
-  window.addEventListener('scroll', updateWhatsappStyleForCurrentSection, { passive: true });
-  window.addEventListener('resize', updateWhatsappStyleForCurrentSection);
-  updateWhatsappStyleForCurrentSection();
-}
-
-  // Quote form submission handler
-  const quoteForm = document.getElementById('quote-form');
-  if (quoteForm) {
-    quoteForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      if (!quoteForm.reportValidity()) {
-        return;
-      }
-
-      const fd = new FormData(quoteForm);
-      const services = fd.getAll('services').map(String).filter(Boolean).join(', ');
-      const data = {
-        firstName: fd.get('firstName') || '',
-        lastName: fd.get('lastName') || '',
-        email: fd.get('email') || '',
-        phone: fd.get('phone') || '',
-        carMake: fd.get('carMake') || '',
-        carModel: fd.get('carModel') || '',
-        services,
-        description: fd.get('description') || ''
-      };
-
-      const fullName = `${data.firstName} ${data.lastName}`.trim();
-      const templateParams = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        name: fullName,
-        from_name: fullName,
-        email: data.email,
-        email_id: data.email,
-        reply_to: data.email,
-        phone: data.phone,
-        phone_number: data.phone,
-        carMake: data.carMake,
-        car_make: data.carMake,
-        carModel: data.carModel,
-        car_model: data.carModel,
-        services: data.services,
-        description: data.description,
-        message: data.description,
-        subject: 'New quote request'
-      };
-
-      console.log('Quote request:', data);
-      console.log('EmailJS template params:', templateParams);
-
-      const submitButton = quoteForm.querySelector('button[type="submit"]');
-      if (submitButton) {
-        submitButton.disabled = true;
-      }
-
-      try {
-        if (window.emailjs && typeof emailjs.send === 'function') {
-          await emailjs.send('service_8fiky12', 'template_5mmlunn', templateParams);
-        }
-
-        alert('Thanks! Your quote request has been submitted.');
-        quoteForm.reset();
-      } catch (error) {
-        console.error('Quote submission failed:', error);
-        alert('Thanks! Your quote request has been submitted.');
-        quoteForm.reset();
-      } finally {
-        if (submitButton) {
-          submitButton.disabled = false;
-        }
-      }
-    });
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.innerHTML = 'Sending request <i class="fa-solid fa-spinner fa-spin"></i>';
   }
+  showFormStatus('');
 
+  try {
+    if (!window.emailjs || typeof window.emailjs.send !== 'function') {
+      throw new Error('Email service is unavailable');
+    }
+
+    await window.emailjs.send('service_8fiky12', 'template_5mmlunn', templateParams);
+    quoteForm.reset();
+    showFormStatus('Thanks! Your quote request has been sent.');
+  } catch (error) {
+    console.error('Quote submission failed:', error);
+    showFormStatus('We could not send this request. Please call or WhatsApp us.', true);
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonText;
+    }
+  }
+});
